@@ -15,15 +15,17 @@ NAME SCHEME
   
   The branch naming scheme is as follows:
 
-h3. Exceptions
+Exceptions
+----------
 
-  # master -- This is special and contains the most common configuration
+  * master -- This is special and contains the most common configuration
 
-h3. General Format
+General Format
+--------------
 
   > nameSpace_ComputerID
 
-  # nameSpace -- is a descriptive name for an area that computer lives in, this could be _work_, _home_, or even _company name_. It should be camel-cased,
-  # ComputerID -- is a descriptive name for the computer, this can be the host name or a identifier that allows one to figure which computer it belongs to.
+  * nameSpace -- is a descriptive name for an area that computer lives in, this could be _work_, _home_, or even _company name_. It should be camel-cased,
+  * ComputerID -- is a descriptive name for the computer, this can be the host name or a identifier that allows one to figure which computer it belongs to.
 
 
