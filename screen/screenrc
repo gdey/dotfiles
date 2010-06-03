@@ -1,0 +1,14 @@
+defflow auto
+defscrollback 10000
+defutf8 on
+msgwait 2
+startup_message off
+termcapinfo xterm ti@:te@
+
+#hardstatus alwayslastline "%{wk}%?%-Lw%?%{bw}%n*%f %t%?(%u)%?%{wk}%?%+Lw%= %{mk}@ %H %{ck}%Y%{wk}-%{ck}%m%{wk}-%{ck}%d %{yk}%D %{gk}%c"
+
+hardstatus off
+
+backtick 1 1200 1200 whoami
+backtick 2 1200 1200 hostname -s 
+caption always "%1`@%2` [%D%d%M:%c] %-Lw%{= BW}%50>%n* %t%{-}%+Lw%<"

@@ -1,0 +1,9 @@
+if [ -d ~/bin ]; then
+PATH=$PATH:~/bin
+export PATH
+fi
+
+export GOROOT=$HOME/go
+export GOOS=darwin
+export GOARCH=amd64
+export GOBIN=$HOME/bin
