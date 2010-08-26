@@ -5,3 +5,9 @@
 	editor = vim
 [merge]
 	tool = vimdiff
+
+[alias]
+   headless-branch = !sh -c 'git symbolic-ref HEAD "refs/heads/$0" && rm .git/index && git clean -fdx'
+   alias = config --get-regexp ^alias\\.
+   branches = branch -a 
+
