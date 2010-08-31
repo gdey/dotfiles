@@ -8,6 +8,8 @@
 
 [alias]
    headless-branch = !sh -c 'git symbolic-ref HEAD "refs/heads/$0" && rm .git/index && git clean -fdx'
-   alias = config --get-regexp ^alias\\.
+   alias = !sh -c 'git config --get-regexp \"^alias\\.\" | cut -d \" \" -f 1 | cut -d \".\" -f 2 '
    branches = branch -a 
+   stat = status
+
 
