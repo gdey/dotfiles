@@ -15,6 +15,7 @@ ln -sf ${DOTFILESDIR}/profile/profile ${HOME}/.profile
 # git
 
 ln -sf ${DOTFILESDIR}/git/gitconfig ${HOME}/.gitconfig
+ln -sf ${DOTFILESDIR}/git/gitignore_global ${HOME}/.gitignore_global
 ln -sf ${DOTFILESDIR}/git/gitk ${HOME}/.gitk
 
 #screen

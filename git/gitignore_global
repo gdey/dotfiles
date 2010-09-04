@@ -1,0 +1,10 @@
+# OS generated files #
+######################
+
+## Mac OS X         ##
+.DS_Store?
+ehthumbs.db
+Icon?
+Thumbs.db
+
+

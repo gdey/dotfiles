@@ -1,8 +1,11 @@
 [user]
 	name = Gautam Dey
 	email = gautam.dey77@gmail.com
+
 [core]
 	editor = vim
+  excludesfiles = ~/.gitignore_global
+
 [merge]
 	tool = vimdiff
 
