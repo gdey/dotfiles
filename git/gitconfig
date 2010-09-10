@@ -14,5 +14,6 @@
    alias = !sh -c 'git config --get-regexp \"^alias\\.\" | cut -d \" \" -f 1 | cut -d \".\" -f 2 '
    branches = branch -a 
    stat = status
+   dcommit = svn dcommit
 
 
