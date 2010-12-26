@@ -3,10 +3,18 @@ if [ -d ~/bin ]; then
    PATH=~/bin:$PATH
    export PATH
 fi
-
 if [ -d ~/perl5/bin ]; then
-   PATH=~/perl5/bin:$PATH
+   PATH=$PATH:~/perl5/bin 
+   if [ -z "$PERL5LIB" ] 
+   then
+      PERL5LIB=$PERL5LIB:~/perl5/lib/perl5
+   else
+      PERL5LIB=~/perl5/lib/perl5
+   fi
    export PATH
+   export PERL5LIB
+   alias cpanm='~/perl5/bin/cpanm --local-lib=~/perl5 '
+
 fi
 
 PATH="$PATH:/Applications/AIR SDK/bin/:/usr/local/bin"

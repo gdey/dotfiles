@@ -16,7 +16,9 @@
    stat = status
    dcommit = svn dcommit
    sco = svn clone 
-
+   testperl = !perl 'use Data::Dumper; print q(hello).Dumper(\@ARGS) ' $1 $2  -
+   test = !sh -c '(  [ -n "$1" ] && export blah "$1" || export blah "origin" )  && echo  "this is something: [$blah]--[$1]" ' -
+   track = !sh -c 'blah=$2; if [ -z "$blah" ]; then blah="bob"; fi; echo $blah'
 
 [color]
 	sh = auto
