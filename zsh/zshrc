@@ -1,11 +1,22 @@
 
 if [ -d ~/bin ]; then
-   PATH=$PATH:~/bin
+   PATH=~/bin:$PATH
    export PATH
 fi
+
+if [ -d ~/perl5/bin ]; then
+   PATH=~/perl5/bin:$PATH
+   export PATH
+fi
+
 PATH="$PATH:/Applications/AIR SDK/bin/:/usr/local/bin"
 
 alias ls='ls -Gh '
+
+if [ -d ~/perl5/lib/perl5 ]; then
+  PERL5LIB=~/perl5/lib/perl5:$PERL5LIB
+  export PERL5LIB
+fi
 
 # Environmental variables for GO
 # http://golang.org/doc/install.html

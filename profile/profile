@@ -7,3 +7,7 @@ export GOROOT=$HOME/go
 export GOOS=darwin
 export GOARCH=amd64
 export GOBIN=$HOME/bin
+
+export NARWHAL_ENGINE=jsc
+
+export PATH="/Users/gdey/narwhal/bin:$PATH"
