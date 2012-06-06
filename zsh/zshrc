@@ -20,6 +20,7 @@ fi
 PATH="$PATH:/Applications/AIR SDK/bin/:/usr/local/bin"
 
 alias ls='ls -Gh '
+alias ll='ls -la '
 
 if [ -d ~/perl5/lib/perl5 ]; then
   PERL5LIB=~/perl5/lib/perl5:$PERL5LIB
