@@ -32,4 +32,5 @@ set expandtab
 set laststatus=2
 set statusline=[%n]\ %<%.99f\ %h%w%m%r%y\ %{exists('*CapsLockStatusline')?CapsLockStatusline():''}%=%-16(\ %l,%c-%v\ %)%P
 
-
+" Have a line that indicates 80 character mark.
+set colorcolumn=81,161

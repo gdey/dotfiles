@@ -32,6 +32,10 @@ ln -sf ${DOTFILESDIR}/vim ${HOME}/.vim
 ln -sf ${DOTFILESDIR}/vim/vimrc ${HOME}/.vimrc
 ln -sf ${DOTFILESDIR}/vim/gvimrc ${HOME}/.gvimrc
 
+# perl
+
+ln -sf ${DOTFILESDIR}/perl/perltidyrc ${HOME}/.perltidyrc
+
 # a bit of setup
 mkdir -p ${DOTFILESDIR}/vim/backup/../tmp
 

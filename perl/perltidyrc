@@ -1,0 +1,6 @@
+# Quick configuration file tealium source code.
+-pt=0
+-lp
+-ce
+-sbt=0
+
