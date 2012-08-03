@@ -1,0 +1,3 @@
+[submodule "vim/additional/perl-vim"]
+	path = vim/additional/perl-vim
+	url = https://github.com/rkitover/perl-vim-mxd.git
