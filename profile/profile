@@ -11,3 +11,8 @@ export GOBIN=$HOME/bin
 export NARWHAL_ENGINE=jsc
 
 export PATH="/Users/gdey/narwhal/bin:$PATH"
+
+# My AWS information.
+export AWS_ACCESS_KEY_ID='AKIAIRSTCXAHFIAXRG3Q'
+export AWS_ACCESS_KEY_SECRET='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'
+export AWS_TEMPLATE_BUCKET='template_test'
