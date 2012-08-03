@@ -31,7 +31,7 @@ fi
 
 if which -s git 1>/dev/null; then
 
-# Yay we found git, not doing anything else.
+# Yay we found git, do nothing anything else.
 
 else
    if [ MACHINE_OS='darwin' ]; then
