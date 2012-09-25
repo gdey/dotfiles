@@ -38,6 +38,11 @@ else
      
        # let's use xcrun.
        alias git='xcrun git'
+       alias make='xcrun make'
+       alias configure='xcrun configure'
+       alias g++='xcrun g++'
+       alias gcc='xcrun gcc'
+
    else
        alias git='echo "Please install git'
    fi
@@ -64,10 +69,10 @@ export LC_ALL=en_US.UTF-8
 export LANG=en_US.UTF-8
 
 ################################
-HISTORYFILE=~/.zsh_history
-setopt HIST_IGNORE_DUPS
-setopt HIST_IGNORE_ALL_DUPS
-setopt HIST_SAVE_NO_DUPS
+#HISTORYFILE=~/.zsh_history
+#setopt HIST_IGNORE_DUPS
+#setopt HIST_IGNORE_ALL_DUPS
+#setopt HIST_SAVE_NO_DUPS
 setopt NO_BEEP
 
 
@@ -225,3 +230,26 @@ $PR_CYAN$PR_SHIFT_IN$PR_HBAR$PR_SHIFT_OUT$PR_NO_COLOUR '
 
 setprompt
 
+# Additional functions
+
+function up()
+{
+    dir=""
+    if [ -z "$1" ]; then
+        dir=..
+    elif [[ $1 =~ ^[0-9]+$ ]]; then
+        x=0
+        while [ $x -lt ${1:-1} ]; do
+            dir=${dir}../
+            x=$(($x+1))
+        done
+    else
+        dir=${PWD%/$1/*}/$1
+    fi
+    cd "$dir";
+}
+
+function upstr()
+{
+    echo "$(up "$1" && pwd)";
+}

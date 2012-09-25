@@ -21,10 +21,17 @@ set vb
 autocmd FileType perl set makeprg=perl\ -c\ %\ $*
 autocmd FileType perl set errorformat=%f:%l:%m
 autocmd FileType perl set autowrite
+autocmd FileType javascript set makeprg=~/bin/check_json.pl\ --verbose\ --show\ %\ $*
 
 function PerlTidy()
   let current_line = line();
 endfunction
+
+" Tidy up a json file, so that I can read it better with _j
+
+
+nnoremap <silent> _j :%!~/bin/check_json.pl --show<cr>
+nnoremap <silent> _J :%!~/bin/check_json.pl --show --min<cr>
 
 " Tidy selected lines (or entire file) with _t:
 nnoremap <silent> _t :%!perltidy -q<Enter>
@@ -32,5 +39,6 @@ vnoremap <slient> _t :!perltidy -q<Enter>
 
 " Deparse obsuscated code
 nnoremap <silent> _d :.!perl -MO=Deparse 2>/dev/null<cr>
-nnoremap <silent> _d :!perl -MO=Deparse 2>/dev/null<cr>
+vnoremap <silent> _d :!perl -MO=Deparse 2>/dev/null<cr>
 
+set columns=160
