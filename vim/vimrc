@@ -1,4 +1,5 @@
 set nocompatible
+set modelines=1
 
 set directory=~/dotfiles/vim/tmp
 set backupdir=~/dotfiles/vim/backup
@@ -31,5 +32,17 @@ set expandtab
 
 set laststatus=2
 set statusline=[%n]\ %<%.99f\ %h%w%m%r%y\ %{exists('*CapsLockStatusline')?CapsLockStatusline():''}%=%-16(\ %l,%c-%v\ %)%P
+
+
+let mapleader = ","
+let maplocalleader = "\\"
+
+" My Mappings.
+" ============
+" Enable Quick editing of VIMRC.
+:nnoremap <leader>ev :vsplit $MYVIMRC<cr>
+:nnoremap <leader>sv :source $MYVIMRC<cr>
+:inoremap kj <esc>
+
 
 

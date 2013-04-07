@@ -18,19 +18,50 @@ set vb
 " incremental search
 
 " On perl file we want to be able to quick run perltidy
+augroup perlgroup
+autocmd!
 autocmd FileType perl set makeprg=perl\ -c\ %\ $*
 autocmd FileType perl set errorformat=%f:%l:%m
 autocmd FileType perl set autowrite
-
-function PerlTidy()
-  let current_line = line();
-endfunction
-
 " Tidy selected lines (or entire file) with _t:
-nnoremap <silent> _t :%!perltidy -q<Enter>
-vnoremap <slient> _t :!perltidy -q<Enter>
+autocmd FileType nnoremap <silent> <leader>t :%!perltidy -q<Enter>
+autocmd Filetype vnoremap <silent> <leader>t :!perltidy -q<Enter>
 
 " Deparse obsuscated code
-nnoremap <silent> _d :.!perl -MO=Deparse 2>/dev/null<cr>
-nnoremap <silent> _d :!perl -MO=Deparse 2>/dev/null<cr>
+autocmd Filetype nnoremap <silent> _d :.!perl -MO=Deparse 2>/dev/null<cr>
+autocmd Filetype vnoremap <silent> _d :!perl -MO=Deparse 2>/dev/null<cr>
+augroup END
+
+"function PerlTidy()
+"  let current_line = line();
+"endfunction
+
+
+
+" Upper case a word in a bit of text.
+nnoremap <c-u> lBvwhU<esc> 
+" Edit vimrc in a split window.
+nnoremap <leader>ev :vsplit $MYVIMRC<cr>
+nnoremap <leader>sv :source $MYVIMRC<cr>
+nnoremap <leader>egv :vsplit $MYGVIMRC<cr>
+nnoremap <leader>sgv :source $MYGVIMRC<cr>
+inoremap jk <esc>
+
+
+nnoremap <leader>" viw<esc>a"<esc>hbi"<esc>lel
+nnoremap <leader>' viw<esc>a'<esc>hbi'<esc>lel
+
+
+:iabbrev adn and
+:iabbrev waht what
+:iabbrev tehn then
+
+
+:iabbrev @@ gautam.dey77@gmail.com
+:iabbrev ccopy Copyright 2011 Gautam Dey, all rights reserved.
+
+"if filetype == 'perl'
+":iabbrev @header #/usr/bin/perl <cr>use 5.12.0; <cr> use strict; <cr> use warnings <cr>
+"endif
+
 
