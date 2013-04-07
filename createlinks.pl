@@ -28,9 +28,7 @@ description "Setting up Vim" => sub {
 };
 
 description "Setting up Perl" =>  sub {
-
    link_file ".perltidyrc" => "perl";
-
 };
 
 
