@@ -51,15 +51,10 @@ fi
 
 
 
-PATH="$PATH:/Applications/AIR SDK/bin/:/usr/local/bin"
+PATH="/usr/local/bin:$PATH:/Applications/AIR SDK/bin"
 
 alias ls='ls -Gh '
 alias ll='ls -la '
-
-if [ -d ~/perl5/lib/perl5 ]; then
-  PERL5LIB=~/perl5/lib/perl5:$PERL5LIB
-  export PERL5LIB
-fi
 
 # Environmental variables for GO
 # http://golang.org/doc/install.html
@@ -69,10 +64,10 @@ export LC_ALL=en_US.UTF-8
 export LANG=en_US.UTF-8
 
 ################################
-#HISTORYFILE=~/.zsh_history
-#setopt HIST_IGNORE_DUPS
-#setopt HIST_IGNORE_ALL_DUPS
-#setopt HIST_SAVE_NO_DUPS
+HISTORYFILE=~/.zsh_history
+setopt HIST_IGNORE_DUPS
+setopt HIST_IGNORE_ALL_DUPS
+setopt HIST_SAVE_NO_DUPS
 setopt NO_BEEP
 
 
@@ -232,7 +227,7 @@ setprompt
 
 # Additional functions
 
-function up()
+function upString()
 {
     dir=""
     if [ -z "$1" ]; then
@@ -246,10 +241,12 @@ function up()
     else
         dir=${PWD%/$1/*}/$1
     fi
-    cd "$dir";
+    echo "$dir";
 }
 
-function upstr()
+funciton up()
 {
-    echo "$(up "$1" && pwd)";
+    dir=$(upString $1)
+    pushd "$dir"
 }
+

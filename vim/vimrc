@@ -34,3 +34,34 @@ set statusline=[%n]\ %<%.99f\ %h%w%m%r%y\ %{exists('*CapsLockStatusline')?CapsLo
 
 " Have a line that indicates 80 character mark.
 set colorcolumn=81,161
+let mapleader = ","
+let maplocalleader = "\\"
+
+
+filetype plugin on
+
+execute pathogen#infect()
+
+
+" My Mappings.
+" =====================================
+" Enable quick editing of VIMRC.
+:nnoremap <leader>ev :vsplit $MYVIMRC<cr>
+:nnoremap <leader>sv :source $MYVIMRC<cr>
+:inoremap kj <esc>
+:inoremap <esc> <nop>
+
+
+" Surround select block of text with quotes.
+:vnoremap <leader>" <esc>a"<esc>'<i"<esc>'>v
+
+":nnoremap <leader>g :silent execute "grep! -r " . shellescape(expand("<cword>")) . " ."<cr>:copen<cr>
+"
+" quick movement between searches
+":nnoremap <leader>gn :cnext<cr>
+":nnoremap <leader>gp :cprevious<cr>
+"
+
+" This will add the date at the current location 
+" the way I like dates to be look.
+:nnoremap <leader>d <esc>:.!date +" \%Y \%B \%d, \%A"<cr>

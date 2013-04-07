@@ -11,3 +11,13 @@ export GOBIN=$HOME/bin
 export NARWHAL_ENGINE=jsc
 
 export PATH="/Users/gdey/narwhal/bin:$PATH"
+
+function parse_git_branch {
+  if git branch 2>/dev/null 1>/dev/null; then
+     GIT_BRANCH=$(echo -n "branch: ";git branch --no-color 2>/dev/null | sed -e '/^[^*]/d' -e 's/* \(.*\)/\1/')
+    echo -n "[ $GIT_BRANCH ] "
+  fi
+}
+
+export PS1='\u@\h `parse_git_branch`\$ '
+
