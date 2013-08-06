@@ -13,6 +13,11 @@ if [ -d ~/bin ]; then
    PATH=~/bin:$PATH
    export PATH
 fi
+
+if [ -d ~/elixir/elixir-0.9.3/bin ]; then
+   PATH=~/elixir/elixir-0.9.3/bin:$PATH
+fi
+
 if [ -d ~/perl5/bin ]; then
    PATH=$PATH:~/perl5/bin 
    if [ -z "$PERL5LIB" ] 
@@ -51,7 +56,7 @@ fi
 
 
 
-PATH="/usr/local/bin:$PATH:/Applications/AIR SDK/bin"
+PATH="/usr/local/sbin:/usr/local/bin:$PATH:/Applications/AIR SDK/bin"
 
 alias ls='ls -Gh '
 alias ll='ls -la '
@@ -64,11 +69,18 @@ export LC_ALL=en_US.UTF-8
 export LANG=en_US.UTF-8
 
 ################################
-HISTORYFILE=~/.zsh_history
+HISTSIZE=10000
+SAVEHIST=10000
+HISTFILE=~/.zsh_history
+
 setopt HIST_IGNORE_DUPS
 setopt HIST_IGNORE_ALL_DUPS
 setopt HIST_SAVE_NO_DUPS
 setopt NO_BEEP
+setopt APPEND_HISTORY
+setopt INC_APPEND_HISTORY
+setopt NO_SHARE_HISTORY
+
 
 
 function parse_git_branch {
@@ -126,22 +138,22 @@ setprompt () {
     ###
     # Need this so the prompt will work.
 
-    setopt prompt_subst
+  setopt prompt_subst
 
 
     ###
     # See if we can use colors.
 
     autoload colors zsh/terminfo
-    if [[ "$terminfo[colors]" -ge 8 ]]; then
-	colors
-    fi
-    for color in RED GREEN YELLOW BLUE MAGENTA CYAN WHITE; do
-	eval PR_$color='%{$terminfo[bold]$fg[${(L)color}]%}'
-	eval PR_LIGHT_$color='%{$fg[${(L)color}]%}'
-	(( count = $count + 1 ))
-    done
-    PR_NO_COLOUR="%{$terminfo[sgr0]%}"
+  if [[ "$terminfo[colors]" -ge 8 ]]; then
+	    colors
+  fi
+  for color in RED GREEN YELLOW BLUE MAGENTA CYAN WHITE; do
+	  eval PR_$color='%{$terminfo[bold]$fg[${(L)color}]%}'
+	  eval PR_LIGHT_$color='%{$fg[${(L)color}]%}'
+	  (( count = $count + 1 ))
+  done
+  PR_NO_COLOUR="%{$terminfo[sgr0]%}"
 
 
     ###
@@ -244,9 +256,31 @@ function upString()
     echo "$dir";
 }
 
-funciton up()
+function up()
 {
     dir=$(upString $1)
     pushd "$dir"
 }
+  #=MARKDOWN begin
+  # The following lines are from the [Linux Magazine][linuxmag]. The point of 
+  #    the article was to teach you how to write compleation functions. This 
+  #    enables tab compleation for most commands. 
+  #=MARKDOWN end
+   
+autoload -U compinit
+compinit
+
+zstyle ':compleation:*' verbose yes
+zstyle ':compleation:*:descriptions' format '%B%d%b'
+zstyle ':compleation:*:message'      format '%d'
+zstyle ':completion:*:message'       format '%d'
+zstyle ':completion:*:warnings'      format 'No matches for: %d'
+zstyle ':completion:*' group-name ''
+
+  #=MARKDOWN begin
+  #  End of lines from the [Linux Magazine][linuxmag].
+  #
+  #[linuxmag]: http://www.linux-mag.com/id/1106/ "How to write zsh completions"
+  #=MARKDOWN end
+
 
