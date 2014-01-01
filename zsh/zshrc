@@ -1,37 +1,9 @@
 
-# Setup the OS Variable to make selecting per OS features
-#   easier.
 
-export MACHINE_OS=$(uname -s |tr 'A-Z' 'a-z')
-export MACHINE_HW=$(uname -m)
-
-
-
-
-
-if [ -d ~/bin ]; then
-   PATH=~/bin:$PATH
-   export PATH
-fi
-
-if [ -d ~/elixir/elixir-0.9.3/bin ]; then
-   PATH=~/elixir/elixir-0.9.3/bin:$PATH
-fi
-
-if [ -d ~/perl5/bin ]; then
-   PATH=$PATH:~/perl5/bin 
-   if [ -z "$PERL5LIB" ] 
-   then
-      PERL5LIB=$PERL5LIB:~/perl5/lib/perl5
-   else
-      PERL5LIB=~/perl5/lib/perl5
-   fi
-   export PATH
-   export PERL5LIB
-#   alias cpanm='~/perl5/bin/cpanm --local-lib=~/perl5 '
-
-fi
-
+ZREQUIRE_FILES=~/dotfiles/zsh/files.d
+for r in $( ls -1 $ZREQUIRE_FILES ); do
+  source $ZREQUIRE_FILES/$r
+done
 # Now we check for git
 
 if which -s git 1>/dev/null; then
@@ -53,35 +25,6 @@ else
    fi
 
 fi
-
-
-
-PATH="/usr/local/sbin:/usr/local/bin:$PATH:/Applications/AIR SDK/bin"
-
-alias ls='ls -Gh '
-alias ll='ls -la '
-
-# Environmental variables for GO
-# http://golang.org/doc/install.html
-export GOARCH=amd64
-export GOOS=darwin
-export LC_ALL=en_US.UTF-8
-export LANG=en_US.UTF-8
-
-################################
-HISTSIZE=10000
-SAVEHIST=10000
-HISTFILE=~/.zsh_history
-
-setopt HIST_IGNORE_DUPS
-setopt HIST_IGNORE_ALL_DUPS
-setopt HIST_SAVE_NO_DUPS
-setopt NO_BEEP
-setopt APPEND_HISTORY
-setopt INC_APPEND_HISTORY
-setopt NO_SHARE_HISTORY
-
-
 
 function parse_git_branch {
   if git branch 2>/dev/null 1>/dev/null; then
@@ -282,5 +225,4 @@ zstyle ':completion:*' group-name ''
   #
   #[linuxmag]: http://www.linux-mag.com/id/1106/ "How to write zsh completions"
   #=MARKDOWN end
-
 
