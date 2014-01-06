@@ -42,6 +42,8 @@ filetype plugin on
 
 execute pathogen#infect()
 
+" This is for rust.
+au BufRead,BufNewfile *.rs set filetype=rust
 
 " My Mappings.
 " =====================================
@@ -65,3 +67,29 @@ execute pathogen#infect()
 " This will add the date at the current location 
 " the way I like dates to be look.
 :nnoremap <leader>d <esc>:.!date +" \%Y \%B \%d, \%A"<cr>
+
+if !exists("g:go_cmd")
+   let g:go_cmd = "go"
+endif
+
+function! DisplayGoRun()
+   " Get the output of the run
+   let runoutput = system(g:go_cmd . " run ". bufname("%"))
+   " Open a new split and set it up.
+   botright split __GO_RUN_OUTPUT__
+   normal! ggdG
+   setlocal filetype=cmd_output
+   setlocal buftype=nofile
+   " Insert output
+   call append(0,split(runoutput,'\v\n'))
+
+endfunction
+
+" This is for rust
+:nnoremap <leader>rt <esc>:!rust test %<cr>
+:nnoremap <leader>rr <esc>:!rust run %<cr>
+
+":nnoremap <leader>rg <esc>:w<cr>:!go run %<cr>
+:nnoremap <leader>rg <esc>:w<cr>:call DisplayGoRun()<cr>
+
+
