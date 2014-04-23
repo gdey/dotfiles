@@ -1,0 +1,12 @@
+# This file is only for MacOS X settings.
+
+# let's use xcrun.
+if which -s git 1>/dev/null; then
+# git is already defined don't need to do anything.
+else
+alias git='xcrun git'
+alias make='xcrun make'
+alias configure='xcrun configure'
+alias g++='xcrun g++'
+alias gcc='xcrun gcc'
+fi

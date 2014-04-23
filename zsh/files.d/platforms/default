@@ -1,0 +1,3 @@
+# This is when we don't know what platform we are on.
+echo "We are running the default platform files."
+alias git='echo "Please install git'

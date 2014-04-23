@@ -4,35 +4,7 @@ ZREQUIRE_FILES=~/dotfiles/zsh/files.d
 for r in $( ls -1 $ZREQUIRE_FILES ); do
   source $ZREQUIRE_FILES/$r
 done
-# Now we check for git
 
-if which -s git 1>/dev/null; then
-
-# Yay we found git, do nothing anything else.
-
-else
-   if [ MACHINE_OS='darwin' ]; then
-     
-       # let's use xcrun.
-       alias git='xcrun git'
-       alias make='xcrun make'
-       alias configure='xcrun configure'
-       alias g++='xcrun g++'
-       alias gcc='xcrun gcc'
-
-   else
-       alias git='echo "Please install git'
-   fi
-
-fi
-
-function parse_git_branch {
-  if git branch 2>/dev/null 1>/dev/null; then
-     GIT_BRANCH=$(echo -n " branch: ";git branch --no-color 2>/dev/null | sed -e '/^[^*]/d' -e 's/* \(.*\)/\1/')
-  else
-     GIT_BRANCH=""
-  fi
-}
 
 function precmd {
 
