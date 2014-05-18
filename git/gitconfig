@@ -1,19 +1,21 @@
 [user]
 	name = Gautam Dey
-	email = gautam.dey77@gmail.com
+	email = gautam@tealium.com
 
 [core]
 	editor = vim
   excludesfiles = ~/.gitignore_global
+	excludesfile = /Users/gdey/.gitignore_global
 
 [merge]
 	tool = vimdiff
 
 [alias]
-   headless-branch = !sh -c 'git symbolic-ref HEAD "refs/heads/$0" && rm .git/index && git clean -fdx'
+   lol = log --graph 
+   headless-branch = !sh -c 'git symbolic-ref HEAD "refs/heads/$0"'
    aliases = !sh -c 'git config --get-regexp \"^alias\\.\" | cut -d \" \" -f 1 | cut -d \".\" -f 2 '
    branches = branch -a 
-   stat = status
+   stat = status -s
    dcommit = svn dcommit
    sco = svn clone 
    testperl = !perl 'use Data::Dumper; print q(hello).Dumper(\@ARGS) ' $1 $2  -
@@ -22,3 +24,12 @@
 
 [color]
 	sh = auto
+	ui = true
+[difftool "sourcetree"]
+	cmd = opendiff \"$LOCAL\" \"$REMOTE\"
+	path = 
+[mergetool "sourcetree"]
+	cmd = /Applications/SourceTree.app/Contents/Resources/opendiff-w.sh \"$LOCAL\" \"$REMOTE\" -ancestor \"$BASE\" -merge \"$MERGED\"
+	trustExitCode = true
+[push]
+	default = simple
