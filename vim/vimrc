@@ -1,4 +1,39 @@
 set nocompatible
+
+" This is for Vundler
+filetype off
+
+
+"set the runtime path to include Vundle and initialize
+set rtp+=~/dotfiles/vim/bundle/Vundle.vim
+call vundle#begin()
+
+" Let vundle manage Vundle, required
+Plugin 'gmarik/Vundle.vim'
+
+" Track the engine.
+Plugin 'SirVer/ultisnips'
+
+" Snippets are separated fom the engine. Add this if you want them:
+Plugin 'honza/vim-snippets'
+
+Plugin 'Valloric/YouCompleteMe'
+
+Plugin 'fatih/vim-go'
+
+call vundle#end() "required
+
+" Trigger configuration. Do not use <tab> if you use YouCompleteMe
+let g:UltiSnipsExpandTrigger="<c-t>"
+let g:UltiSnipsJumpForwardTrigger="<c-b>"
+let g:UltiSnipsJumpBackwardTrigger="<c-z>"
+
+" If you want :UltiSnipsEdit to split your window
+"let g:UltiSnipsEditSplit="vertical"
+
+
+filetype plugin indent on "required
+
 set modelines=1
 
 set directory=~/dotfiles/vim/tmp
@@ -8,101 +43,80 @@ set mouse=a
 
 syntax on
 
-set shiftwidth=3 autoindent tabstop=3 smarttab number mouse=a bg=dark
+set shiftwidth=4 autoindent tabstop=3 smarttab number mouse=a bg=dark
 set hlsearch
 set hidden
 set number
-
-set wildmenu
-set wildignore=.git,*.app,*.pbxindex
-set wildmode=list:longest
-
+"
+"set wildmenu
+"set wildignore=.git,*.app,*.pbxindex
+"set wildmode=list:longest
+"
 set ruler
 set hlsearch
 set incsearch
-
+"
 set wrap
 set visualbell
 set title
-
-
-set tabstop=2
-set shiftwidth=2
-set expandtab
-
+"
+"
+"set tabstop=2
+"set shiftwidth=2
+"set expandtab
+"
 set laststatus=2
 set statusline=[%n]\ %<%.99f\ %h%w%m%r%y\ %{exists('*CapsLockStatusline')?CapsLockStatusline():''}%=%-16(\ %l,%c-%v\ %)%P
-
-" Have a line that indicates 80 character mark.
+"
+"" Have a line that indicates 80 character mark.
 set colorcolumn=81,161
 let mapleader = ","
 let maplocalleader = "\\"
-
-
-filetype plugin on
-
-execute pathogen#infect()
-
-" This is for rust.
-au BufRead,BufNewfile *.rs set filetype=rust
-
-" My Mappings.
-" =====================================
-" Enable quick editing of VIMRC.
-:nnoremap <leader>ev :vsplit $MYVIMRC<cr>
-:nnoremap <leader>sv :source $MYVIMRC<cr>
-:inoremap kj <esc>
-":inoremap <esc> <nop>
-
-
-" Surround select block of text with quotes.
-:vnoremap <leader>" <esc>a"<esc>'<i"<esc>'>v
-
-":nnoremap <leader>g :silent execute "grep! -r " . shellescape(expand("<cword>")) . " ."<cr>:copen<cr>
 "
-" quick movement between searches
-":nnoremap <leader>gn :cnext<cr>
-":nnoremap <leader>gp :cprevious<cr>
 "
-
-" This will add the date at the current location 
-" the way I like dates to be look.
-:nnoremap <leader>d <esc>:.!date +" \%Y \%B \%d, \%A"<cr>
-
-if !exists("g:go_cmd")
-   let g:go_cmd = "go"
-endif
-
-function! DisplayGoRun()
-   " Get the output of the run
-   let runoutput = system(g:go_cmd . " run ". bufname("%"))
-   " Open a new split and set it up.
-   botright split __GO_RUN_OUTPUT__
-   normal! ggdG
-   setlocal filetype=cmd_output
-   setlocal buftype=nofile
-   " Insert output
-   call append(0,split(runoutput,'\v\n'))
-
-endfunction
-
-" This is for rust
-:nnoremap <leader>rt <esc>:!rust test %<cr>
-:nnoremap <leader>rr <esc>:!rust run %<cr>
-
-":nnoremap <leader>rg <esc>:w<cr>:!go run %<cr>
-:nnoremap <leader>rg <esc>:w<cr>:call DisplayGoRun()<cr>
-
-
-let mapleader = ","
-let maplocalleader = "\\"
-
+""filetype plugin on
+"
+""execute pathogen#infect()
+"
+"" This is for rust.
+""au BufRead,BufNewfile *.rs set filetype=rust
+"
+"" My Mappings.
+"" =====================================
+"" Enable quick editing of VIMRC.
+":nnoremap <leader>ev :vsplit $MYVIMRC<cr>
+":nnoremap <leader>sv :source $MYVIMRC<cr>
+":inoremap kj <esc>
+"":inoremap <esc> <nop>
+"
+"
+"" Surround select block of text with quotes.
+":vnoremap <leader>" <esc>a"<esc>'<i"<esc>'>v
+"
+"":nnoremap <leader>g :silent execute "grep! -r " . shellescape(expand("<cword>")) . " ."<cr>:copen<cr>
+""
+"" quick movement between searches
+"":nnoremap <leader>gn :cnext<cr>
+"":nnoremap <leader>gp :cprevious<cr>
+""
+"
+"" This will add the date at the current location 
+"" the way I like dates to be look.
+":nnoremap <leader>d <esc>:.!date +" \%Y \%B \%d, \%A"<cr>
+"
+"
+"
+"
 " My Mappings.
 " ============
 " Enable Quick editing of VIMRC.
 :nnoremap <leader>ev :vsplit $MYVIMRC<cr>
 :nnoremap <leader>sv :source $MYVIMRC<cr>
 :inoremap kj <esc>
+"
+" Go settings
 
+au FileType go nmap <leader>gv <Plug>(go-doc-vertical)
+au FileType go nmap <leader>i <Plug>(go-info)
 
 

@@ -4,6 +4,8 @@
 export MACHINE_OS=$(uname -s |tr 'A-Z' 'a-z')
 export MACHINE_HW=$(uname -m)
 
+set -o vi
+
 PATH="/usr/local/sbin:/usr/local/bin:$PATH:/Applications/AIR SDK/bin"
 
 if [ -d ~/bin ]; then

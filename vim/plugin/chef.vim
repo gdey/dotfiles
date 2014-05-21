@@ -1,1 +1,0 @@
-vim-chef/plugin/chef.vim
