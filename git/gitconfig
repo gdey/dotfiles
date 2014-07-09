@@ -1,10 +1,9 @@
 [user]
 	name = Gautam Dey
-	email = gautam@tealium.com
-
+	email = gautam@deyfamily.org
 [core]
 	editor = vim
-  excludesfiles = ~/.gitignore_global
+        excludesfiles = ~/.gitignore_global
 	excludesfile = /Users/gdey/.gitignore_global
 
 [merge]
