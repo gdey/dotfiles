@@ -1,3 +1,8 @@
 let g:netrw_dirhistmax  =10
-let g:netrw_dirhist_cnt =1
-let g:netrw_dirhist_1='/Volumes/Macintosh HD 2/DropBox/Projects/go/src/github.com/gdey/gdeymon'
+let g:netrw_dirhist_cnt =6
+let g:netrw_dirhist_1='/Users/gdey/Documents/Dropbox/teal/chef_clean_build/data_bags/rabbitmq_users'
+let g:netrw_dirhist_2='/Users/gdey/Documents/Dropbox/teal/chef_clean_build/data_bags'
+let g:netrw_dirhist_3='/Users/gdey/Documents/Dropbox/teal/chef_clean_build/data_bags/rabbitmq_users'
+let g:netrw_dirhist_4='/Users/gdey/Documents/Dropbox/teal/chef_clean_build/link_to_chef_cookbook_repo/cookbooks/tealium_datacloud/definitions'
+let g:netrw_dirhist_5='/Users/gdey/Documents/Dropbox/teal/chef_clean_build/environments'
+let g:netrw_dirhist_6='/Users/gdey/Documents/Dropbox/teal/chef_clean_build'

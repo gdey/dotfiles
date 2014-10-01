@@ -119,4 +119,15 @@ let maplocalleader = "\\"
 au FileType go nmap <leader>gv <Plug>(go-doc-vertical)
 au FileType go nmap <leader>i <Plug>(go-info)
 
+"Ruby settings
+
+au FileType ruby set expandtab 
+au FileType ruby set shiftwidth=2 
+au FileType ruby set softtabstop=2 
+
+"Perl settings
+
+au FileType perl set expandtab 
+au FileType perl set shiftwidth=2 
+au FileType perl set softtabstop=2 
 
