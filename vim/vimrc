@@ -147,4 +147,3 @@ au FileType perl nmap <Leader>a, :Tabularize /,<CR>
 au FileType perl vmap <Leader>a, :Tabularize /,<CR>
 au FileType perl nmap <Leader>a= :Tabularize /=<CR>
 au FileType perl vmap <Leader>a= :Tabularize /=<CR>
-
