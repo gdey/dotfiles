@@ -198,6 +198,3 @@ zstyle ':completion:*' group-name ''
   #[linuxmag]: http://www.linux-mag.com/id/1106/ "How to write zsh completions"
   #=MARKDOWN end
 
-
-eval `opam config env`
-

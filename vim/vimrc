@@ -11,6 +11,26 @@ call vundle#begin()
 " Let vundle manage Vundle, required
 Plugin 'gmarik/Vundle.vim'
 
+" Git wrapper for vim
+Plugin 'tpope/vim-fugitive'
+
+" Provide Git status in the gutter
+Plugin 'airblade/vim-gitgutter'
+
+" NerdTree is a file explore
+Plugin 'scrooloose/nerdtree'
+
+" Better JSON handling
+Plugin 'elzr/vim-json'
+
+" Surround plugin
+Plugin 'tpope/vim-surround'
+
+" Markdown support
+Plugin 'godlygeek/tabular'
+Plugin 'plasticboy/vim-markdown'
+
+
 " Track the engine.
 Plugin 'SirVer/ultisnips'
 
@@ -43,7 +63,11 @@ set mouse=a
 
 syntax on
 
-set shiftwidth=4 autoindent tabstop=3 smarttab number mouse=a bg=dark
+set shiftwidth=4 
+set autoindent 
+set tabstop=3 
+set smarttab 
+set bg=dark
 set hlsearch
 set hidden
 set number
@@ -67,33 +91,15 @@ set title
 "
 set laststatus=2
 set statusline=[%n]\ %<%.99f\ %h%w%m%r%y\ %{exists('*CapsLockStatusline')?CapsLockStatusline():''}%=%-16(\ %l,%c-%v\ %)%P
-"
+
+set listchars=tab:☞⋅,eol:¬,conceal:⎨,nbsp:⌴,extends:⎕,extends:…,precedes:…
+
+set list
+
 "" Have a line that indicates 80 character mark.
 set colorcolumn=81,161
 let mapleader = ","
 let maplocalleader = "\\"
-"
-"
-""filetype plugin on
-"
-""execute pathogen#infect()
-"
-"" This is for rust.
-""au BufRead,BufNewfile *.rs set filetype=rust
-"
-"" My Mappings.
-"" =====================================
-"" Enable quick editing of VIMRC.
-":nnoremap <leader>ev :vsplit $MYVIMRC<cr>
-":nnoremap <leader>sv :source $MYVIMRC<cr>
-":inoremap kj <esc>
-"":inoremap <esc> <nop>
-"
-"
-"" Surround select block of text with quotes.
-":vnoremap <leader>" <esc>a"<esc>'<i"<esc>'>v
-"
-"":nnoremap <leader>g :silent execute "grep! -r " . shellescape(expand("<cword>")) . " ."<cr>:copen<cr>
 ""
 "" quick movement between searches
 "":nnoremap <leader>gn :cnext<cr>
@@ -118,5 +124,27 @@ let maplocalleader = "\\"
 
 au FileType go nmap <leader>gv <Plug>(go-doc-vertical)
 au FileType go nmap <leader>i <Plug>(go-info)
+au FileType go let g:go_fmt_command = "goimports"
+au FileType go let g:go_auto_type_info = 1
 
+
+"Ruby settings
+
+au FileType ruby set expandtab 
+au FileType ruby set shiftwidth=2 
+au FileType ruby set softtabstop=2 
+
+"Perl settings
+
+au FileType perl set expandtab 
+au FileType perl set shiftwidth=4 
+au FileType perl set softtabstop=4 
+au FileType perl set tabstop=4
+au FileType perl set nowrap
+au FileType perl nmap <Leader>a> :Tabularize /=><CR>
+au FileType perl vmap <Leader>a> :Tabularize /=><CR>
+au FileType perl nmap <Leader>a, :Tabularize /,<CR>
+au FileType perl vmap <Leader>a, :Tabularize /,<CR>
+au FileType perl nmap <Leader>a= :Tabularize /=<CR>
+au FileType perl vmap <Leader>a= :Tabularize /=<CR>
 
