@@ -25,11 +25,11 @@ Plugin 'elzr/vim-json'
 
 " Surround plugin
 Plugin 'tpope/vim-surround'
+"
+Plugin 'godlygeek/tabular'
 
 " Markdown support
-Plugin 'godlygeek/tabular'
 Plugin 'plasticboy/vim-markdown'
-
 
 " Track the engine.
 Plugin 'SirVer/ultisnips'
@@ -72,10 +72,6 @@ set hlsearch
 set hidden
 set number
 "
-"set wildmenu
-"set wildignore=.git,*.app,*.pbxindex
-"set wildmode=list:longest
-"
 set ruler
 set hlsearch
 set incsearch
@@ -84,18 +80,10 @@ set wrap
 set visualbell
 set title
 "
-"
-"set tabstop=2
-"set shiftwidth=2
-"set expandtab
-"
 set laststatus=2
 set statusline=[%n]\ %<%.99f\ %h%w%m%r%y\ %{exists('*CapsLockStatusline')?CapsLockStatusline():''}%=%-16(\ %l,%c-%v\ %)%P
 
-set listchars=tab:☞⋅,eol:¬,conceal:⎨,nbsp:⌴,extends:⎕,extends:…,precedes:…
-
 set list
-
 
 " NerdTree settings
 autocmd bufenter * if (winnr("$") == 1 && exists("b:NERDTreeType") && b:NERDTreeType == "primary") | q | endif
@@ -109,8 +97,8 @@ let mapleader = ","
 let maplocalleader = "\\"
 ""
 "" quick movement between searches
-"":nnoremap <leader>gn :cnext<cr>
-"":nnoremap <leader>gp :cprevious<cr>
+:nnoremap <leader>gn :cnext<cr>
+:nnoremap <leader>gp :cprevious<cr>
 ""
 "
 "" This will add the date at the current location 
@@ -128,29 +116,9 @@ let maplocalleader = "\\"
 :inoremap kj <esc>
 "
 " Go settings
-
-au FileType go nmap <leader>gv <Plug>(go-doc-vertical)
-au FileType go nmap <leader>i <Plug>(go-info)
-au FileType go let g:go_fmt_command = "goimports"
-au FileType go let g:go_auto_type_info = 1
-
-
+au FileType go source ~/dotfiles/vim/sources.d/go.vim
 "Ruby settings
-
-au FileType ruby set expandtab 
-au FileType ruby set shiftwidth=2 
-au FileType ruby set softtabstop=2 
-
+au FileType ruby source ~/dotfiles/vim/sources.d/ruby.vim
 "Perl settings
+au FileType perl source ~/dotfiles/vim/sources.d/perl.vim
 
-au FileType perl set expandtab 
-au FileType perl set shiftwidth=4 
-au FileType perl set softtabstop=4 
-au FileType perl set tabstop=4
-au FileType perl set nowrap
-au FileType perl nmap <Leader>a> :Tabularize /=><CR>
-au FileType perl vmap <Leader>a> :Tabularize /=><CR>
-au FileType perl nmap <Leader>a, :Tabularize /,<CR>
-au FileType perl vmap <Leader>a, :Tabularize /,<CR>
-au FileType perl nmap <Leader>a= :Tabularize /=<CR>
-au FileType perl vmap <Leader>a= :Tabularize /=<CR>
